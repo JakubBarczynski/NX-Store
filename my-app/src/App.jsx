@@ -9,7 +9,18 @@ function App() {
   return (
     <>
       <Navbar />
-      <Card />
+      <section>
+        <div>
+          <h1></h1>
+          <p></p>
+          <a></a>
+        </div>
+      </section>
+      <section id='featured' className='py-[30px] px-[100px]'>
+        <div id='products'>
+          <Card />
+        </div>
+      </section>
       <Footer />
     </>
   )
