@@ -1,24 +1,20 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import Footer from './components/footer'
-import Card from './components/card'
-import Tagline from './components/tagline'
-import Hero from './components/hero'
+import { useState } from 'react';
+import { Routes, Route } from "react-router-dom";
+import Products from './pages/Products';
+import Settings from './pages/Settings';
+import Cart from './pages/Cart';
+import Home from './pages/Home';
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
-      <Navbar />
-      <Tagline />
-      <Hero />
-      <section id='featured' className='py-6 w-full bottom-0 mb-40 absolute'>
-        <div id='products' className='ml-16'>
-          <Card />
-        </div>
-      </section>
-      <Footer />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/settings" element={<Settings />} />
+      </Routes>
     </>
   )
 }
