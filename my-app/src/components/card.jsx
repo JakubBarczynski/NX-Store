@@ -1,15 +1,58 @@
-import { useNavigate } from "react-router-dom";
-function Card() {
-    const navigate = useNavigate();
+import { useContext, useState } from "react";
+import AuthModal from "./AuthModal";
+import { CartContext } from "../context/CartContext";
+
+function Card({ id, name, price, image, description, setIsLoggedIn, onViewProduct }) {
+    const { addToCart } = useContext(CartContext);
+    const [authOpen, setAuthOpen] = useState(false);
+    const isLoggedIn = !!localStorage.getItem("token");
+
+    const handleAddToCart = () => {
+        if (!isLoggedIn) {
+            setAuthOpen(true);
+        } else {
+            addToCart({ id, name, price, image });
+        }
+    };
+
     return (
-        <div className="bg-black p-2.5 text-white rounded-2xl inline-block text-right box-border relative top-4">
-            <img src="/images/gift_box.jpg" className="h-52 w-72"/>
-            <p id="description" className="text-white relative text-left top-3 mt-2">Product 1</p>
-            <p id="price" className="relative right-2.5 mb-4">$12</p>
-            <button className="bg-white text-black px-2.5 py-1.5 rounded-full text-sm font-small hover:bg-[rgb(190,186,186)]" onClick={() => navigate("/products")}>View Product</button>
-            <button className="bg-white text-black px-3 py-1.5 rounded-full text-sm font-small ml-4 hover:bg-[rgb(190,186,186)]" onClick={() => navigate("/cart")}>Add to Cart</button>
-        </div>
-    )
+        <>
+            <div className="bg-[#1a1a1a] border border-gray-800 rounded-2xl overflow-hidden flex flex-col hover:border-[rgb(223,153,3)] transition-colors duration-300">
+                <img src={image} className="w-full h-56 object-cover" />
+                
+                <div className="p-4 flex flex-col flex-1">
+                    <p className="text-white font-semibold mb-1">{name}</p>
+                    <p className="text-[rgb(223,153,3)] mb-4">£{price}</p>
+
+                    <div className="flex gap-3 mt-auto">
+                        <button
+                            className="flex-1 border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black transition-colors duration-300 py-1.5 rounded-full text-sm"
+                            onClick={() => onViewProduct({ id, name, price, image, description })}
+                        >
+                            View Product
+                        </button>
+                        <button
+                            className="flex-1 border border-gray-700 text-white hover:border-[rgb(223,153,3)] hover:text-[rgb(223,153,3)] transition-colors duration-300 py-1.5 rounded-full text-sm"
+                            onClick={handleAddToCart}
+                        >
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <AuthModal
+                    isOpen={authOpen}
+                    onClose={() => setAuthOpen(false)}
+                    setIsLoggedIn={setIsLoggedIn}
+                />
+            </div>
+            <AuthModal
+                isOpen={authOpen}
+                onClose={() => setAuthOpen(false)}
+                setIsLoggedIn={setIsLoggedIn}
+            />
+        </>
+    );
 }
 
-export default Card
+export default Card;
