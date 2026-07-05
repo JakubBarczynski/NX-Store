@@ -13,6 +13,7 @@ import { CartProvider } from "./context/CartContext";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -21,7 +22,10 @@ function App() {
   return (
     <>
       <CartProvider>
-        <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+        <Navbar isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                authOpen={authOpen}
+                setAuthOpen={setAuthOpen}/>
         
           
           <Routes>

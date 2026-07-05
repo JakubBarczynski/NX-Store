@@ -1,12 +1,14 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import Item from "../components/Item";
 import Summary from "../components/Summary";
 import useFadeIn from "../hooks/useFadeIn";
 
-function Cart() {
+
+function Cart({ isLoggedIn, setIsLoggedIn, setAuthOpen }) {
     const { cartItems } = useContext(CartContext);
     const sectionRef = useFadeIn();
+
 
     return (
         <div ref={sectionRef} className="min-h-screen bg-[#222] px-10 py-24">

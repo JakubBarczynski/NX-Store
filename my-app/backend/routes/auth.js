@@ -4,7 +4,10 @@ const jwt = require("jsonwebtoken");
 const pool = require("../db.js"); // your db.js already uses require
 
 const router = express.Router();
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
+const JWT_SECRET = process.env.JWT_SECRET;
+if (!process.env.JWT_SECRET) {
+  throw new Error("JWT_SECRET not set");
+}
 
 // SIGNUP
 router.post("/signup", async (req, res) => {
@@ -32,7 +35,7 @@ router.post("/login", async (req, res) => {
   try {
     const result = await pool.query("SELECT * FROM users WHERE email=$1", [email]);
     const user = result.rows[0];
-    if (!user) return res.status(400).json({ error: "Invalid credentials" });
+    if (!user) return res.statkus(400).json({ error: "Invalid credentials" });
 
     const match = await bcrypt.compare(password, user.password_hash);
     if (!match) return res.status(400).json({ error: "Invalid credentials" });

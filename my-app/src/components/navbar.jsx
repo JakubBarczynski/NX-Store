@@ -4,8 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AuthModal from "./AuthModal"; 
 import { CartContext } from "../context/CartContext";
 
-function Navbar({ isLoggedIn, setIsLoggedIn }) {
-  const [authOpen, setAuthOpen] = useState(false);
+function Navbar({ isLoggedIn, setIsLoggedIn, authOpen, setAuthOpen }) {
   const { clearCart } = useContext(CartContext);
 
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ function Navbar({ isLoggedIn, setIsLoggedIn }) {
             onClick={handleLogout}
             className="bg-[#222] hover:bg-[#ffc971] text-white font-semibold px-4 py-2 rounded-full transition-colors duration-200 shadow-sm"
           >
-            Logout
+            Log out
           </button>
         ) : (
           <button
