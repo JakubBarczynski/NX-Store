@@ -24,15 +24,17 @@ function Home({ setIsLoggedIn }) {
                 <section id='featured' className='py-1 w-full bottom-0 mb-16 fade-in'>
                     <div id='products' className=' mt-4 flex gap-6 justify-center fade-in'>
                         {products.map(product => (
-                            <Card className="fade-in"
+                            <Card
                                 key={product.id}
                                 id={product.id}
                                 name={product.name}
                                 price={product.price}
                                 image={product.image}
                                 description={product.description}
-                                setIsLoggedIn={setIsLoggedIn}
+                                images={product.images}
+                                sizes={product.sizes}
                                 onViewProduct={setSelectedProduct}
+                                setIsLoggedIn={setIsLoggedIn}
                             />
                             
                         ))}
@@ -45,8 +47,10 @@ function Home({ setIsLoggedIn }) {
                     price={selectedProduct?.price}
                     description={selectedProduct?.description}
                     image={selectedProduct?.image}
+                    images={selectedProduct?.images ?? []}
+                    sizes={selectedProduct?.sizes ?? []}
                     onClose={() => setSelectedProduct(null)}
-                />  
+                />
             </div>
         </>
     )

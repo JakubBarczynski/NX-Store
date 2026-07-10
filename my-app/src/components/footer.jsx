@@ -45,7 +45,7 @@ function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-4">Contact</h3>
                     <div className="space-y-2 text-gray-400">
-                        <p>📞 +44 1234 567890</p>
+                        {/* <p>📞 +44 1234 567890</p> */}
                         <p>✉️ support@NXPerfectGiftBox.com</p>
                     </div>
                 </div>
@@ -64,7 +64,7 @@ function Footer() {
                         </a>
 
                         <a
-                            href="https://instagram.com"
+                            href="https://www.instagram.com/nxperfectgiftbox/"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-white transition"
@@ -86,7 +86,7 @@ function Footer() {
             </div>
 
             <div className="border-t border-gray-700 mt-12 pt-6 text-sm text-gray-500">
-                © {new Date().getFullYear()} ShopSphere. All rights reserved.
+                © {new Date().getFullYear()} NX Perfect Gift Box. All rights reserved.
             </div>
         </footer>
     );

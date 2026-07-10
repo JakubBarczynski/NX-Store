@@ -37,6 +37,8 @@ function Products({ setIsLoggedIn }) {
                             price={product.price}
                             image={product.image}
                             description={product.description}
+                            images={product.images}
+                            sizes={product.sizes}
                             onViewProduct={setSelectedProduct}
                             setIsLoggedIn={setIsLoggedIn}
                         />
@@ -52,6 +54,8 @@ function Products({ setIsLoggedIn }) {
                 price={selectedProduct?.price}
                 description={selectedProduct?.description}
                 image={selectedProduct?.image}
+                images={selectedProduct?.images ?? []}
+                sizes={selectedProduct?.sizes ?? []}
                 onClose={() => setSelectedProduct(null)}
             />
         </>
