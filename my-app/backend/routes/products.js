@@ -9,10 +9,13 @@ router.get("/featured", async (req, res) => {
       SELECT 
         p.*,
         COALESCE(array_agg(DISTINCT pi.image_url) FILTER (WHERE pi.image_url IS NOT NULL), '{}') AS images,
-        COALESCE(array_agg(DISTINCT ps.size) FILTER (WHERE ps.size IS NOT NULL), '{}') AS sizes
+        COALESCE((
+          SELECT array_agg(ps2.size ORDER BY ps2.position)
+          FROM product_sizes ps2
+          WHERE ps2.product_id = p.id
+        ), '{}') AS sizes
       FROM items p
       LEFT JOIN product_images pi ON pi.product_id = p.id
-      LEFT JOIN product_sizes ps ON ps.product_id = p.id
       WHERE p.features = TRUE
       GROUP BY p.id
     `);
@@ -32,10 +35,13 @@ router.get("/", async (req, res) => {
       SELECT 
         p.*,
         COALESCE(array_agg(DISTINCT pi.image_url) FILTER (WHERE pi.image_url IS NOT NULL), '{}') AS images,
-        COALESCE(array_agg(DISTINCT ps.size) FILTER (WHERE ps.size IS NOT NULL), '{}') AS sizes
+        COALESCE((
+          SELECT array_agg(ps2.size ORDER BY ps2.position)
+          FROM product_sizes ps2
+          WHERE ps2.product_id = p.id
+        ), '{}') AS sizes
       FROM items p
       LEFT JOIN product_images pi ON pi.product_id = p.id
-      LEFT JOIN product_sizes ps ON ps.product_id = p.id
       GROUP BY p.id
     `);
 

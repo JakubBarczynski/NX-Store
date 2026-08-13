@@ -8,6 +8,23 @@ function Summary() {
         return sum + item.price * item.quantity;
     }, 0);
 
+    const handleCheckout = async () => {
+        try {
+            const response = await fetch("http://localhost:5000/checkout", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ cartItems }),
+            });
+
+            const data = await response.json();
+            if (data.url) {
+                window.location.href = data.url;
+            }
+        } catch (err) {
+            console.error("Checkout error:", err);
+        }
+    };
+
     return (
         <div className="sticky top-10 bg-[#1a1a1a] border border-gray-800 p-6 rounded-2xl">
 
@@ -18,7 +35,10 @@ function Summary() {
                 <span className="text-white font-semibold text-lg">£{total.toFixed(2)}</span>
             </div>
 
-            <button className="w-full border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black transition-colors duration-300 py-3 rounded-full font-semibold">
+            <button
+                onClick={handleCheckout}
+                className="w-full border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black transition-colors duration-300 py-3 rounded-full font-semibold"
+            >
                 Checkout
             </button>
 

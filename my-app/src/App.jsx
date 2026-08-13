@@ -1,52 +1,54 @@
-// import { useState, useEffect } from 'react';
-// import { Routes, Route } from "react-router-dom";
-// import Products from './pages/Products';
-// import Cart from './pages/Cart';
-// import Home from './pages/Home';
-// import About from './pages/About';
-// import Navbar from './components/Navbar';
-// import Footer from './components/Footer';
-// import PopupCartSummary from "./components/PopupCartSummary";
-// import { CartProvider } from "./context/CartContext";
-// import ComingSoon from './pages/ComingSoon';
-// // import AuthModal from './components/AuthModal';
+import { useState, useEffect } from 'react';
+import { Routes, Route } from "react-router-dom";
+import Products from './pages/Products';
+import Cart from './pages/Cart';
+import Home from './pages/Home';
+import About from './pages/About';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import PopupCartSummary from "./components/PopupCartSummary";
+import { CartProvider } from "./context/CartContext";
+import ComingSoon from './pages/ComingSoon';
+import AuthModal from './components/AuthModal';
+import Success from './pages/Success';
 
 
-// function App() {
-//   const [isLoggedIn, setIsLoggedIn] = useState(false);
-//   const [authOpen, setAuthOpen] = useState(false);
+function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [authOpen, setAuthOpen] = useState(false);
 
-//   useEffect(() => {
-//     const token = localStorage.getItem("token");
-//     setIsLoggedIn(!!token);
-//   }, []);
-//   return (
-//     <>
-//       <CartProvider>
-//         <Navbar isLoggedIn={isLoggedIn}
-//                 setIsLoggedIn={setIsLoggedIn}
-//                 authOpen={authOpen}
-//                 setAuthOpen={setAuthOpen}/>
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    setIsLoggedIn(!!token);
+  }, []);
+  return (
+    <>
+      <CartProvider>
+        <Navbar isLoggedIn={isLoggedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                authOpen={authOpen}
+                setAuthOpen={setAuthOpen}/>
         
           
-//           <Routes>
-//             <Route path="/" element={<ComingSoon />} />
-//             <Route path="/products" element={<Products setIsLoggedIn={setIsLoggedIn} />} />
-//             <Route path="/cart" element={<Cart />} />
-//             <Route path="/about" element={<About />} />
-//           </Routes>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/products" element={<Products setIsLoggedIn={setIsLoggedIn} />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/success" element={<Success />} />
+          </Routes>
           
         
-//         {/* <AuthModal 
-//           setIsLoggedIn={setIsLoggedIn} 
-//         /> */}
-//         <Footer />
-//       </CartProvider>
-//     </>
-//   )
-// }
+        {/* <AuthModal 
+          setIsLoggedIn={setIsLoggedIn} 
+        /> */}
+        <Footer />
+      </CartProvider>
+    </>
+  )
+}
 
-// export default App
+export default App
 
 
 
@@ -94,10 +96,10 @@
 
 
 
-import ComingSoon from './pages/ComingSoon';
+// import ComingSoon from './pages/ComingSoon';
 
-function App() {
-  return <ComingSoon />;
-}
+// function App() {
+//   return <ComingSoon />;
+// }
 
-export default App;
+// export default App;

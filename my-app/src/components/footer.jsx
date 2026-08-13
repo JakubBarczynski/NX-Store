@@ -19,22 +19,22 @@ function Footer() {
                     <h3 className="text-lg font-semibold mb-4">Legal</h3>
                     <ul className="space-y-2 text-gray-400">
                         <li>
-                            <Link to="/privacy-policy" className="hover:text-white transition">
+                            <Link to="/Privacy-policy" className="hover:text-white transition">
                                 Privacy Policy
                             </Link>
                         </li>
                         <li>
-                            <Link to="/terms-and-conditions" className="hover:text-white transition">
+                            <Link to="/Terms-and-conditions" className="hover:text-white transition">
                                 Terms & Conditions
                             </Link>
                         </li>
                         <li>
-                            <Link to="/returns-policy" className="hover:text-white transition">
+                            <Link to="/Returns-policy" className="hover:text-white transition">
                                 Returns & Refund Policy
                             </Link>
                         </li>
                         <li>
-                            <Link to="/cookie-policy" className="hover:text-white transition">
+                            <Link to="/Cookie-policy" className="hover:text-white transition">
                                 Cookie Policy
                             </Link>
                         </li>
@@ -45,8 +45,8 @@ function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-4">Contact</h3>
                     <div className="space-y-2 text-gray-400">
-                        {/* <p>📞 +44 1234 567890</p> */}
-                        <p>✉️ support@NXPerfectGiftBox.com</p>
+                        <p>📞 07594 469921</p>
+                        <p>✉️ nxperfectgiftbox@gmail.com</p>
                     </div>
                 </div>
 
@@ -54,14 +54,14 @@ function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-4">Follow Us</h3>
                     <div className="flex gap-4 text-gray-400">
-                        <a
+                        {/* <a
                             href="https://facebook.com"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-white transition"
                         >
                             Facebook
-                        </a>
+                        </a> */}
 
                         <a
                             href="https://www.instagram.com/nxperfectgiftbox/"
@@ -72,14 +72,14 @@ function Footer() {
                             Instagram
                         </a>
 
-                        <a
+                        {/* <a
                             href="https://x.com"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="hover:text-white transition"
                         >
                             X
-                        </a>
+                        </a> */}
                     </div>
                 </div>
 
