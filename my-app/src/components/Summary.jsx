@@ -10,10 +10,14 @@ function Summary() {
 
     const handleCheckout = async () => {
         try {
+            const token = localStorage.getItem("token");
+            const payload = JSON.parse(atob(token.split(".")[1]));
+            const customerEmail = payload.email;
+
             const response = await fetch("http://localhost:5000/checkout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ cartItems }),
+                body: JSON.stringify({ cartItems, customerEmail }),
             });
 
             const data = await response.json();

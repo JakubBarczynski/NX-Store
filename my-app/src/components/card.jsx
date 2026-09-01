@@ -26,13 +26,13 @@ function Card({ id, name, price, image, description, images, sizes, setIsLoggedI
 
                     <div className="flex gap-3 mt-auto">
                         <button
-                            className="flex-1 border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black transition-colors duration-300 py-1.5 rounded-full text-sm"
+                            className="flex-1 border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black active:bg-[rgb(180,120,0)] transition-colors duration-300 py-1.5 rounded-full text-sm"
                             onClick={() => onViewProduct({ id, name, price, image, description, images, sizes})}
                         >
                             View Product
                         </button>
                         <button
-                            className="flex-1 border border-gray-700 text-white hover:border-[rgb(223,153,3)] hover:text-[rgb(223,153,3)] transition-colors duration-300 py-1.5 rounded-full text-sm"
+                            className="flex-1 border border-gray-700 text-white hover:border-[rgb(223,153,3)] hover:text-[rgb(223,153,3)] active:border-white active:text-white transition-colors duration-300 py-1.5 rounded-full text-sm"
                             onClick={handleAddToCart}
                         >
                             Add to Cart

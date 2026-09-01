@@ -9,7 +9,7 @@ const productRoutes = require("./routes/products");
 const app = express();
 const checkoutRoutes = require("./routes/checkout");
 
-
+app.use("/checkout/webhook", express.raw({ type: "application/json" }));
 app.use(cors());
 app.use(express.json());
 app.use("/auth", authRoutes);

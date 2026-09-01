@@ -12,7 +12,7 @@ function Hero() {
             <div className="fade-in w-16 h-px bg-[rgb(223,153,3)] mx-auto mb-8"></div>
             <p className="fade-in text-lg text-gray-400 mb-12">Curated gift boxes for the young athletes in your life.</p>
             <button
-                className="fade-in border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black transition-colors duration-300 text-lg px-8 py-3 rounded-full"
+                className="fade-in border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black active:bg-[rgb(180,120,0)] transition-colors duration-300 text-lg px-8 py-3 rounded-full"
                 onClick={() => navigate("/products")}
             >
                 Shop Now
