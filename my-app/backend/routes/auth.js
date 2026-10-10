@@ -49,7 +49,7 @@ router.post("/send-code", async (req, res) => {
     codes.set(email, code);
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: process.env.OWNER_EMAIL,
+      to: email,
       subject: "DO NOT SHARE",
       text: code
     });
@@ -70,7 +70,7 @@ router.post("/send-reset-code", async (req, res) => {
     codes.set(email, code);
     await resend.emails.send({
       from: "onboarding@resend.dev",
-      to: process.env.OWNER_EMAIL,
+      to: email,
       subject: "DO NOT SHARE",
       text: code
     });
