@@ -19,22 +19,22 @@ function Footer() {
                     <h3 className="text-lg font-semibold mb-4">Legal</h3>
                     <ul className="space-y-2 text-gray-400">
                         <li>
-                            <Link to="/Privacy-policy" className="hover:text-white transition">
+                            <Link to="/privacy-policy" className="hover:text-white transition">
                                 Privacy Policy
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Terms-and-conditions" className="hover:text-white transition">
+                            <Link to="/terms-and-conditions" className="hover:text-white transition">
                                 Terms & Conditions
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Returns-policy" className="hover:text-white transition">
+                            <Link to="/returns-policy" className="hover:text-white transition">
                                 Returns & Refund Policy
                             </Link>
                         </li>
                         <li>
-                            <Link to="/Cookie-policy" className="hover:text-white transition">
+                            <Link to="/cookie-policy" className="hover:text-white transition">
                                 Cookie Policy
                             </Link>
                         </li>

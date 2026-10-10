@@ -29,16 +29,19 @@ export function CartProvider({ children }) {
     }
 
     async function fetchCart() {
-        const token = localStorage.getItem("token");
-
-        const res = await fetch("http://localhost:5000/cart", {
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        });
-
-        const data = await res.json();
-        setCartItems(data);
+        try {
+            const token = localStorage.getItem("token");
+            const res = await fetch("http://localhost:5000/cart", {
+                headers: {"Authorization": `Bearer ${token}`}
+            });
+            const data = await res.json();
+            setCartItems(data);
+            if (!res.ok) {
+                setCartItems([]);
+            } 
+        } catch {
+            setCartItems([]);
+        }
     }
 
     async function removeFromCart(productId) {

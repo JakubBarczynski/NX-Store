@@ -1,3 +1,4 @@
+const pool = require("../db");
 const express = require("express");
 const router = express.Router();
 const Stripe = require("stripe");
@@ -60,6 +61,9 @@ router.post("/webhook", express.raw({ type: "application/json" }), async (req, r
         const itemList = cartItems.map(item => 
             `${item.name} x${item.quantity} — £${(item.price * item.quantity).toFixed(2)}`
         ).join("\n");
+        const userResult = await pool.query("SELECT id FROM users WHERE email = $1", [customerEmail]);
+        const userId = userResult.rows[0].id;
+        const result = await pool.query("DELETE FROM cart WHERE user_id = $1", [userId]);
 
         // Email to customer
         await resend.emails.send({

@@ -11,6 +11,10 @@ import { CartProvider } from "./context/CartContext";
 import ComingSoon from './pages/ComingSoon';
 import AuthModal from './components/AuthModal';
 import Success from './pages/Success';
+import Privacy_policy from './pages/policies/Privacy_policy';
+import Cookie_policy from './pages/policies/Cookie_policy';
+import Terms_and_conditions from './pages/policies/Terms_and_conditions';
+import Returns_policy from './pages/policies/Returns_policy';
 
 
 function App() {
@@ -36,6 +40,10 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/about" element={<About />} />
             <Route path="/success" element={<Success />} />
+            <Route path="/privacy-policy" element={<Privacy_policy />} />
+            <Route path="/terms-and-conditions" element={<Terms_and_conditions />} />
+            <Route path="/returns-policy" element={<Returns_policy />} />
+            <Route path="/cookie-policy" element={<Cookie_policy />} />
           </Routes>
           
         
