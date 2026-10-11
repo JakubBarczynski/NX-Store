@@ -17,12 +17,8 @@ export function CartProvider({ children }) {
         await fetch("http://localhost:5000/cart/add", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                productId: product.id
-            })
+                "Content-Type": "application/json", "Authorization": `Bearer ${token}`},
+            body: JSON.stringify({ productId: product.id, size: product.size })
         });
 
         fetchCart();
@@ -44,42 +40,33 @@ export function CartProvider({ children }) {
         }
     }
 
-    async function removeFromCart(productId) {
+    async function removeFromCart(productId, size) {
         const token = localStorage.getItem("token");
 
-        await fetch(`http://localhost:5000/cart/${productId}`, {
+        await fetch(`http://localhost:5000/cart/${productId}/${size}`, {
             method: "DELETE",
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
+            headers: { "Authorization": `Bearer ${token}` }
         });
-
         fetchCart();
     }
 
     // increase quantity (+)
-    async function increaseQuantity(productId) {
+    async function increaseQuantity(productId, size) {
         const token = localStorage.getItem("token");
 
         await fetch("http://localhost:5000/cart/add", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify({
-                productId
-            })
+            headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
+            body: JSON.stringify({ productId, size })
         });
-
         fetchCart();
     }
 
     // decrease quantity (-)
-    async function decreaseQuantity(productId) {
+    async function decreaseQuantity(productId, size) {
         const token = localStorage.getItem("token");
 
-        await fetch(`http://localhost:5000/cart/decrease/${productId}`, {
+        await fetch(`http://localhost:5000/cart/decrease/${productId}/${size}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`

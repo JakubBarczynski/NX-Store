@@ -88,7 +88,12 @@ function ProductModal({ isOpen, onClose, id, name, price, description, image, im
                     </button>
                     <button
                         className="border border-[rgb(223,153,3)] text-[rgb(223,153,3)] hover:bg-[rgb(223,153,3)] hover:text-black active:bg-[rgb(180,120,0)] transition-colors duration-300 px-6 py-2 rounded-full text-sm font-semibold"
-                        onClick={() => { addToCart({ id, name, price, image, size: selectedSize }); onClose(); }}
+                        onClick={() => { 
+                            if (!selectedSize) {
+                                alert("Please select a size");
+                                return;
+                            }
+                            addToCart({ id, name, price, image, size: selectedSize }); onClose(); }}
                     >
                         Add to Cart
                     </button>

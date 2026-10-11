@@ -45,8 +45,10 @@ function Footer() {
                 <div>
                     <h3 className="text-lg font-semibold mb-4">Contact</h3>
                     <div className="space-y-2 text-gray-400">
-                        <p>📞 07594 469921</p>
-                        <p>✉️ nxperfectgiftbox@gmail.com</p>
+                        {/* <p>📞 07594 469921</p> */}
+                        <p>📞 ###########</p>
+                        {/* <p>✉️ nxperfectgiftbox@gmail.com</p> */}
+                        <p>✉️ ###@gmail.com</p>
                     </div>
                 </div>
 

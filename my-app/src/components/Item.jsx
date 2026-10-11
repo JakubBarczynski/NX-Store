@@ -16,18 +16,19 @@ function Item({ item }) {
             <div className="flex-1 ml-6">
                 <h2 className="text-white font-semibold text-lg">{item.name}</h2>
                 <p className="text-[rgb(223,153,3)] mt-1">£{item.price}</p>
+                <p className="text-gray-500 text-sm mt-1">Size: {item.size}</p>
 
                 {/* Quantity control */}
                 <div className="flex items-center gap-3 mt-3">
                     <button
-                        onClick={() => decreaseQuantity(item.product_id)}
+                        onClick={() => decreaseQuantity(item.product_id, item.size)}
                         className="w-7 h-7 flex items-center justify-center border border-gray-700 text-white rounded-full hover:border-[rgb(223,153,3)] hover:text-[rgb(223,153,3)] transition-colors"
                     >
                         -
                     </button>
                     <span className="text-white text-sm">{item.quantity}</span>
                     <button
-                        onClick={() => increaseQuantity(item.product_id)}
+                        onClick={() => increaseQuantity(item.product_id, item.size)}
                         className="w-7 h-7 flex items-center justify-center border border-gray-700 text-white rounded-full hover:border-[rgb(223,153,3)] hover:text-[rgb(223,153,3)] transition-colors"
                     >
                         +
@@ -37,7 +38,7 @@ function Item({ item }) {
 
             {/* Remove */}
             <button
-                onClick={() => removeFromCart(item.product_id)}
+                onClick={() => removeFromCart(item.product_id, item.size)}
                 className="text-gray-600 text-sm hover:text-red-400 transition-colors"
             >
                 Remove

@@ -7,7 +7,7 @@ const { authMiddleware } = require("./auth");
 router.get("/", authMiddleware, async (req, res) => {
   try {
     const result = await pool.query(
-      `SELECT cart.product_id, cart.quantity, items.name, items.price, items.image
+      `SELECT cart.product_id, cart.quantity, cart.size, items.name, items.price, items.image
        FROM cart
        JOIN items ON cart.product_id = items.id
        WHERE cart.user_id = $1
@@ -23,22 +23,22 @@ router.get("/", authMiddleware, async (req, res) => {
 
 // ADD ITEM
 router.post("/add", authMiddleware, async (req, res) => {
-  const { productId } = req.body;
+  const { productId, size } = req.body;
   try {
     const existing = await pool.query(
-      "SELECT * FROM cart WHERE user_id=$1 AND product_id=$2",
-      [req.user.id, productId]
+      "SELECT * FROM cart WHERE user_id=$1 AND product_id=$2 AND size=$3",
+      [req.user.id, productId, size]
     );
 
     if (existing.rows.length > 0) {
       await pool.query(
-        "UPDATE cart SET quantity = quantity + 1 WHERE user_id=$1 AND product_id=$2",
-        [req.user.id, productId]
+        "UPDATE cart SET quantity = quantity + 1 WHERE user_id=$1 AND product_id=$2 AND size=$3",
+        [req.user.id, productId, size]
       );
     } else {
       await pool.query(
-        "INSERT INTO cart (user_id, product_id, quantity) VALUES ($1,$2,1)",
-        [req.user.id, productId]
+        "INSERT INTO cart (user_id, product_id, quantity, size) VALUES ($1,$2,1,$3)",
+        [req.user.id, productId, size]
       );
     }
     res.json({ message: "Added to cart" });
@@ -49,11 +49,11 @@ router.post("/add", authMiddleware, async (req, res) => {
 });
 
 // DECREASE QUANTITY
-router.put("/decrease/:productId", authMiddleware, async (req, res) => {
+router.put("/decrease/:productId/:size", authMiddleware, async (req, res) => {
   try {
     const existing = await pool.query(
-      "SELECT * FROM cart WHERE user_id=$1 AND product_id=$2",
-      [req.user.id, req.params.productId]
+      "SELECT * FROM cart WHERE user_id=$1 AND product_id=$2 AND size=$3",
+      [req.user.id, req.params.productId, req.params.size]
     );
 
     if (existing.rows.length === 0) {
@@ -61,15 +61,14 @@ router.put("/decrease/:productId", authMiddleware, async (req, res) => {
     }
 
     if (existing.rows[0].quantity === 1) {
-      // if quantity is 1, just remove it entirely
       await pool.query(
-        "DELETE FROM cart WHERE user_id=$1 AND product_id=$2",
-        [req.user.id, req.params.productId]
+        "DELETE FROM cart WHERE user_id=$1 AND product_id=$2 AND size=$3",
+        [req.user.id, req.params.productId, req.params.size]
       );
     } else {
       await pool.query(
-        "UPDATE cart SET quantity = quantity - 1 WHERE user_id=$1 AND product_id=$2",
-        [req.user.id, req.params.productId]
+        "UPDATE cart SET quantity = quantity - 1 WHERE user_id=$1 AND product_id=$2 AND size=$3",
+        [req.user.id, req.params.productId, req.params.size]
       );
     }
 
@@ -81,11 +80,11 @@ router.put("/decrease/:productId", authMiddleware, async (req, res) => {
 });
 
 // REMOVE ITEM
-router.delete("/:productId", authMiddleware, async (req, res) => {
+router.delete("/:productId/:size", authMiddleware, async (req, res) => {
   try {
     await pool.query(
-      "DELETE FROM cart WHERE user_id=$1 AND product_id=$2",
-      [req.user.id, req.params.productId]
+      "DELETE FROM cart WHERE user_id=$1 AND product_id=$2 AND size=$3",
+      [req.user.id, req.params.productId, req.params.size]
     );
     res.json({ message: "Item removed" });
   } catch (err) {
