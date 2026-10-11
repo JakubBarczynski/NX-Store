@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import Card from '../components/card-temp';
+import Card from '../components/Card';
 import useFadeIn from "../hooks/useFadeIn";
-import Hero from '../components/hero-temp';    
+import Hero from '../components/Hero';    
 import ProductModal from "../components/ProductModal";
 
 function Home({ setIsLoggedIn }) {
