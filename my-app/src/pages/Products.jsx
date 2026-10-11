@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import Card from "../components/Card";
+import Card from "../components/card-temp";
 import PopupCartSummary from "../components/PopupCartSummary";
 import ProductModal from "../components/ProductModal";
 import useFadeIn from "../hooks/useFadeIn";
