@@ -4,7 +4,7 @@ import Products from './pages/Products';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
 import About from './pages/About';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar.jsx';
 import Footer from './components/Footer';
 import PopupCartSummary from "./components/PopupCartSummary";
 import { CartProvider } from "./context/CartContext";
