@@ -25,7 +25,7 @@ const authLimiter = rateLimit({
 
 // CORS
 app.use(cors({
-    origin: "http://localhost:5173", // update this to your Vercel URL when deployed
+    origin: "https://nx-gift-store.vercel.app/", // update this to your Vercel URL when deployed
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true
 }));
