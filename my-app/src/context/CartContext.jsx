@@ -14,7 +14,7 @@ export function CartProvider({ children }) {
 
     async function addToCart(product) {
         const token = localStorage.getItem("token");
-        await fetch("http://localhost:5000/cart/add", {
+        await fetch("https://nx-store.onrender.com/cart/add", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json", "Authorization": `Bearer ${token}`},
@@ -27,7 +27,7 @@ export function CartProvider({ children }) {
     async function fetchCart() {
         try {
             const token = localStorage.getItem("token");
-            const res = await fetch("http://localhost:5000/cart", {
+            const res = await fetch("https://nx-store.onrender.com/cart", {
                 headers: {"Authorization": `Bearer ${token}`}
             });
             const data = await res.json();
@@ -43,7 +43,7 @@ export function CartProvider({ children }) {
     async function removeFromCart(productId, size) {
         const token = localStorage.getItem("token");
 
-        await fetch(`http://localhost:5000/cart/${productId}/${size}`, {
+        await fetch(`https://nx-store.onrender.com/cart/${productId}/${size}`, {
             method: "DELETE",
             headers: { "Authorization": `Bearer ${token}` }
         });
@@ -54,7 +54,7 @@ export function CartProvider({ children }) {
     async function increaseQuantity(productId, size) {
         const token = localStorage.getItem("token");
 
-        await fetch("http://localhost:5000/cart/add", {
+        await fetch("https://nx-store.onrender.com/cart/add", {
             method: "POST",
             headers: { "Content-Type": "application/json", "Authorization": `Bearer ${token}` },
             body: JSON.stringify({ productId, size })
@@ -66,7 +66,7 @@ export function CartProvider({ children }) {
     async function decreaseQuantity(productId, size) {
         const token = localStorage.getItem("token");
 
-        await fetch(`http://localhost:5000/cart/decrease/${productId}/${size}`, {
+        await fetch(`https://nx-store.onrender.com/cart/decrease/${productId}/${size}`, {
             method: "PUT",
             headers: {
                 "Authorization": `Bearer ${token}`

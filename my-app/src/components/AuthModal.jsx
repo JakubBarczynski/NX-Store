@@ -23,19 +23,19 @@ export default function AuthModal({ isOpen, onClose, setIsLoggedIn }) {
       let data;
 
       if (isLogin) {
-        endpoint = "http://localhost:5000/auth/login";
+        endpoint = "https://nx-store.onrender.com/auth/login";
         data = { email, password };
       } else if (isForgotPassword && !codeSent) {
-        endpoint = "http://localhost:5000/auth/send-reset-code";
+        endpoint = "https://nx-store.onrender.com/auth/send-reset-code";
         data = { email };
       } else if (isForgotPassword && codeSent) {
-        endpoint = "http://localhost:5000/auth/reset-password";
+        endpoint = "https://nx-store.onrender.com/auth/reset-password";
         data = { email, password: newPassword, code_input: codeInput };
       } else if (!isLogin && !codeSent) {
-        endpoint = "http://localhost:5000/auth/send-code";
+        endpoint = "https://nx-store.onrender.com/auth/send-code";
         data = { email };
       } else {
-        endpoint = "http://localhost:5000/auth/signup";
+        endpoint = "https://nx-store.onrender.com/auth/signup";
         data = { email, password, full_name: fullName, code_input: codeInput };
       }
 

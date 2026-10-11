@@ -14,7 +14,7 @@ function Summary() {
             const payload = JSON.parse(atob(token.split(".")[1]));
             const customerEmail = payload.email;
 
-            const response = await fetch("http://localhost:5000/checkout", {
+            const response = await fetch("https://nx-store.onrender.com/checkout", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ cartItems, customerEmail }),

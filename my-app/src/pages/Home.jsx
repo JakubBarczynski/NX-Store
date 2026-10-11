@@ -11,7 +11,7 @@ function Home({ setIsLoggedIn }) {
     const [selectedProduct, setSelectedProduct] = useState(null);
 
     useEffect(() => {
-        fetch("http://localhost:5000/products/featured")
+        fetch("https://nx-store.onrender.com/products/featured")
             .then(res => res.json())
             .then(data => setProducts(data))
             .catch(err => console.error(err))
