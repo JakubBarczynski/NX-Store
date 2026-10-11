@@ -25,8 +25,8 @@ router.post("/", async (req, res) => {
                 quantity: item.quantity,
             })),
             mode: "payment",
-            success_url: "http://localhost:5173/success",
-            cancel_url: "http://localhost:5173/cart",
+            success_url: "https://nx-gift-store.vercel.app/success",
+            cancel_url: "https://nx-gift-store.vercel.app/cart",
             metadata: {
                 cartItems: JSON.stringify(cartItems)
             }
