@@ -5,20 +5,22 @@ The project demonstrates core e-commerce functionality including user authentica
 
 **Status:** In progress – core features implemented, further development ongoing.
 
+##Live Demo
+- Visit the deployed application: https://nx-gift-store.vercel.app/
+
 ## Features
 
 ### Currently Working
 - User registration and login (authentication)
 - Product catalogue with listing and basic details
 - Shopping cart (add / remove items)
-- Responsive layout for desktop and mobile
+- Responsive layout for desktop
+- Payment integration
 
 ### In Progress / Planned
-- Payment integration
 - Order processing and history
 - Admin dashboard
 - Product search and filtering
-- Deployment
 - Responsive layout for both desktop and mobile
 - Product admin view
 
@@ -34,19 +36,16 @@ NodeJS + Express
 PostgreSQL
 
 **Other tools:**  
-- JWT
-- TailwindCSS
-- Git & GitHub
+- Version Control: Git, GitHub
+- Styling: Tailwind CSS
+- Authentication: JSON Web Tokens (JWT)
+- Database: Supabase (PostgreSQL)
+- Deployment: Vercel (frontend), Render (backend)
+- Payments: Stripe Checkout
 
 ## Getting Started
 
 ### Prerequisites
-- React and node installed
-- Ecommerce_db running locally (or connection string ready)
+- Web browser
+- Internet connection
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone (https://github.com/JakubBarczynski/NX-Store.git)
-   cd NX-Store
